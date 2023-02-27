@@ -1,0 +1,220 @@
+wrist-watch 0
+pig 1
+alarm clock 2
+chair 3
+tablelamp 4
+nose 5
+trousers 6
+boomerang 7
+van 8
+sponge bob 9
+mouse (animal) 10
+book 11
+angel 12
+donut 13
+tire 14
+helicopter 15
+tomato 16
+skateboard 17
+cup 18
+dragon 19
+feather 20
+piano 21
+present 22
+flying saucer 23
+swan 24
+microphone 25
+bed 26
+calculator 27
+harp 28
+tent 29
+truck 30
+radio 31
+squirrel 32
+teddy-bear 33
+axe 34
+scorpion 35
+snail 36
+house 37
+cloud 38
+chandelier 39
+cactus 40
+sheep 41
+tv 42
+fork 43
+revolver 44
+hamburger 45
+pear 46
+trumpet 47
+pineapple 48
+bear (animal) 49
+sun 50
+comb 51
+purse 52
+rabbit 53
+submarine 54
+floor lamp 55
+computer-mouse 56
+ship 57
+seagull 58
+frog 59
+cigarette 60
+panda 61
+eye 62
+cannon 63
+standing bird 64
+camera 65
+rifle 66
+potted plant 67
+sea turtle 68
+hat 69
+cat 70
+keyboard 71
+mug 72
+syringe 73
+castle 74
+hammer 75
+palm tree 76
+bicycle 77
+bush 78
+helmet 79
+human-skeleton 80
+sailboat 81
+key 82
+saxophone 83
+pen 84
+scissors 85
+monkey 86
+hot-dog 87
+parking meter 88
+parrot 89
+door handle 90
+grenade 91
+snowman 92
+ear 93
+vase 94
+suv 95
+apple 96
+bathtub 97
+megaphone 98
+flying bird 99
+leaf 100
+backpack 101
+wheel 102
+cow 103
+mosquito 104
+ipod 105
+santa claus 106
+shovel 107
+person walking 108
+sword 109
+walkie talkie 110
+elephant 111
+socks 112
+couch 113
+screwdriver 114
+race car 115
+person sitting 116
+bee 117
+skyscraper 118
+traffic light 119
+pretzel 120
+pickup truck 121
+beer-mug 122
+door 123
+guitar 124
+baseball bat 125
+paper clip 126
+pumpkin 127
+mouth 128
+hand 129
+tennis-racket 130
+car (sedan) 131
+cell phone 132
+crab 133
+zebra 134
+motorbike 135
+pipe (for smoking) 136
+owl 137
+armchair 138
+tree 139
+loudspeaker 140
+octopus 141
+bulldozer 142
+giraffe 143
+kangaroo 144
+mailbox 145
+cake 146
+satellite 147
+head-phones 148
+head 149
+wine-bottle 150
+crane (machine) 151
+shark 152
+grapes 153
+rainbow 154
+mermaid 155
+bookshelf 156
+knife 157
+hedgehog 158
+fire hydrant 159
+barn 160
+face 161
+bowl 162
+eyeglasses 163
+carrot 164
+moon 165
+spider 166
+binoculars 167
+crocodile 168
+airplane 169
+ladder 170
+toothbrush 171
+toilet 172
+bench 173
+power outlet 174
+tooth 175
+teapot 176
+arm 177
+lightbulb 178
+umbrella 179
+snake 180
+speed-boat 181
+hourglass 182
+dog 183
+fish 184
+flashlight 185
+ice-cream-cone 186
+butterfly 187
+wheelbarrow 188
+skull 189
+dolphin 190
+mushroom 191
+blimp 192
+basket 193
+violin 194
+microscope 195
+train 196
+stapler 197
+flower with stem 198
+envelope 199
+camel 200
+diamond 201
+wineglass 202
+cabinet 203
+foot 204
+spoon 205
+tiger 206
+bell 207
+candle 208
+duck 209
+satellite dish 210
+crown 211
+strawberry 212
+rooster 213
+lion 214
+computer monitor 215
+lobster 216
+pigeon 217
+church 218
+ashtray 219

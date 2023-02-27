@@ -1,0 +1,30 @@
+banana 0
+bus 1
+tractor 2
+suitcase 3
+streetlight 4
+telephone 5
+bottle opener 6
+canoe 7
+fan 8
+teacup 9
+penguin 10
+laptop 11
+shoe 12
+lighter 13
+hot air balloon 14
+pizza 15
+brain 16
+ant 17
+t-shirt 18
+trombone 19
+windmill 20
+snowboard 21
+table 22
+rollerblades 23
+parachute 24
+space shuttle 25
+bridge 26
+frying-pan 27
+bread 28
+horse 29

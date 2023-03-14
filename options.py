@@ -12,7 +12,6 @@ class Option:
                             choices=['sketchy_extend', 'tu_berlin', 'Quickdraw'])
         parser.add_argument('--test_class', type=str, default='test_class_sketchy25',
                             choices=['test_class_sketchy25', 'test_class_sketchy21', 'test_class_tuberlin30', 'Quickdraw'])
-        parser.add_argument('--zeroversion', type=str, default='zeroshot1')
 
         # model
         parser.add_argument('--cls_number', type=int, default=100)
@@ -24,7 +23,7 @@ class Option:
         parser.add_argument('--anchor_number', '-a', type=int, default=49)
 
         # train
-        parser.add_argument('--save', '-s', type=str, default='./checkpoints/skethcy_ext')
+        parser.add_argument('--save', '-s', type=str, default='./checkpoints/sketchy_ext')
         parser.add_argument('--batch', type=int, default=15)
         parser.add_argument('--epoch', type=int, default=30)
         parser.add_argument('--datasetLen', type=int, default=10000)
@@ -34,7 +33,7 @@ class Option:
         # test
         parser.add_argument('--load', '-l', type=str, default=None)
         parser.add_argument('--retrieval', '-r', type=str, default='rn', choices=['rn', 'sa'])
-        parser.add_argument('--split', default=False, action='store_true', help='train/test scale')
+        parser.add_argument('--testall', default=False, action='store_true', help='train/test scale')
         parser.add_argument('--test_sk', type=int, default=20)
         parser.add_argument('--test_im', type=int, default=20)
         parser.add_argument('--num_workers', type=int, default=4)

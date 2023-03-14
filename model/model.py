@@ -30,7 +30,7 @@ class Model(nn.Module):
             token_fea = ca_fea[:, 1:]  # [4b, 196, 768]
             batch = token_fea.size(0)
 
-            token_fea = token_fea.view(batch, 512, 14, 14)
+            token_fea = token_fea.view(batch, 768, 14, 14)
             down_fea = self.conv2d(token_fea)
             down_fea = down_fea.view(batch, 512, 7*7)
             down_fea = down_fea.transpose(1, 2)  # [4b, 49, 512]
@@ -58,7 +58,7 @@ class Model(nn.Module):
                 token_fea = ca_fea[:, 1:]  # [2b, 196, 768]
                 batch = token_fea.size(0)
 
-                token_fea = token_fea.view(batch, 512, 14, 14)
+                token_fea = token_fea.view(batch, 768, 14, 14)
                 down_fea = self.conv2d(token_fea)
                 down_fea = down_fea.view(batch, 512, 7 * 7)
                 down_fea = down_fea.transpose(1, 2)  # [2b, 49, 512]

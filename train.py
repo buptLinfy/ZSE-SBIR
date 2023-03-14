@@ -37,7 +37,7 @@ def train():
         start_time = time.time()
         num_total_steps = args.datasetLen // args.batch
 
-        for index, (sk, im, sk_neg, im_neg, sk_label, im_label, _, _) in enumerate(tqdm(train_data_loader)):
+        for index, (sk, im, sk_neg, im_neg, sk_label, im_label, _, _) in enumerate(train_data_loader):
             # prepare data
             sk = torch.cat((sk, sk_neg))
             im = torch.cat((im, im_neg))

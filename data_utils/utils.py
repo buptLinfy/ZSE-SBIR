@@ -128,52 +128,52 @@ def get_file_list_iccv(args, rootpath, skim, split):
     # 对验证的样本数量进行缩减
     # sketch 15229->762 image 17101->1711
     if args.dataset == 'sketchy_extend' and split == 'test' and skim == 'sketch':
-        if args.split:
-            index = [i for i in range(0, file_names.shape[0], 20*args.split)]   # 762
+        if args.testall:
+            index = [i for i in range(0, file_names.shape[0], 1)]  # 15229
         else:
-            index = [i for i in range(0, file_names.shape[0], 1)]   # 15229
+            index = [i for i in range(0, file_names.shape[0], 20)]   # 762
         file_names = file_names[index[:]]
         labels = labels[index[:]]
 
     if args.dataset == 'sketchy_extend' and split == 'test' and skim == 'images':
-        if args.split:
-            index = [i for i in range(0, file_names.shape[0], 10*args.split)]  # 1711
+        if args.testall:
+            index = [i for i in range(0, file_names.shape[0], 1)]  # 17101
         else:
-            index = [i for i in range(0, file_names.shape[0], 1)]   # 17101
+            index = [i for i in range(0, file_names.shape[0], 10)]  # 1711
         file_names = file_names[index[:]]
         labels = labels[index[:]]
 
     # sketch 2400->800, image 27989->1400
     if args.dataset == "tu_berlin" and skim == "sketch" and split == "test":
-        if args.split:
-            index = [i for i in range(0, file_names.shape[0], 3*args.split)]  # 800
+        if args.testall:
+            index = [i for i in range(0, file_names.shape[0], 1)]  # 2400
         else:
-            index = [i for i in range(0, file_names.shape[0], 1)]   # 2400
+            index = [i for i in range(0, file_names.shape[0], 3)]  # 800
         file_names = file_names[index[:]]
         labels = labels[index[:]]
 
     if args.dataset == "tu_berlin" and skim == "images" and split == "test":
-        if args.split:
-            index = [i for i in range(0, file_names.shape[0], 20*args.split)]   # 1400
+        if args.testall:
+            index = [i for i in range(0, file_names.shape[0], 1)]  # 27989
         else:
-            index = [i for i in range(0, file_names.shape[0], 1)]   # 27989
+            index = [i for i in range(0, file_names.shape[0], 20)]  # 1400
         file_names = file_names[index[:]]
         labels = labels[index[:]]
 
     # Quickdraw 92291->770, image 54151->1806
     if args.dataset == "Quickdraw" and skim == "sketch" and split == "test":
-        if args.split:
-            index = [i for i in range(0, file_names.shape[0], 120*args.split)]  # 770
+        if args.testall:
+            index = [i for i in range(0, file_names.shape[0], 1)]  # 92291
         else:
-            index = [i for i in range(0, file_names.shape[0], 1)]   # 92291
+            index = [i for i in range(0, file_names.shape[0], 120)]  # 770
         file_names = file_names[index[:]]
         labels = labels[index[:]]
 
     if args.dataset == "Quickdraw" and skim == "images" and split == "test":
-        if args.split:
-            index = [i for i in range(0, file_names.shape[0], 30*args.split)]  # 1806
+        if args.testall:
+            index = [i for i in range(0, file_names.shape[0], 1)]  # 54151
         else:
-            index = [i for i in range(0, file_names.shape[0], 1)]   # 54151
+            index = [i for i in range(0, file_names.shape[0], 30)]  # 1806
         file_names = file_names[index[:]]
         labels = labels[index[:]]
 

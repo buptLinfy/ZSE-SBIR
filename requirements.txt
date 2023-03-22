@@ -1,0 +1,8 @@
+torch==1.10.0+cu113
+torchvision==0.2.2
+tqdm==4.65.0
+numpy==1.19.2
+Pillow==9.4.0
+einops==0.3.0
+joblib==1.2.0
+tensorboardX==2.6

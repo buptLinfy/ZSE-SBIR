@@ -176,11 +176,10 @@ This project is released under the [MIT License](./LICENSE).
 If you find this repository useful for your research, please use the following.
 ```
 @inproceedings{
-anonymous2023zeroshot,
+zse-sbir-cvpr2023,
 title={Zero-Shot Everything Sketch-Based Image Retrieval, and in Explainable Style},
-author={Anonymous},
-booktitle={Conference on Computer Vision and Pattern Recognition 2023},
-year={2023},
-url={https://openreview.net/forum?id=uXwODv6fH42}
+author={Fengyin Lin, Mingkang Li, Da Li, Timothy Hospedales, Yi-Zhe Song and Yonggang Qi},
+booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+year={2023}
 }
 ```

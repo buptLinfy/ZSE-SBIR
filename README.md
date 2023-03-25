@@ -176,10 +176,10 @@ This project is released under the [MIT License](./LICENSE).
 If you find this repository useful for your research, please use the following.
 ```
 @inproceedings{
-zse-sbir-cvpr2023,
-title={Zero-Shot Everything Sketch-Based Image Retrieval, and in Explainable Style},
-author={Fengyin Lin, Mingkang Li, Da Li, Timothy Hospedales, Yi-Zhe Song and Yonggang Qi},
-booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-year={2023}
+    zse-sbir-cvpr2023,
+    title={Zero-Shot Everything Sketch-Based Image Retrieval, and in Explainable Style},
+    author={Fengyin Lin, Mingkang Li, Da Li, Timothy Hospedales, Yi-Zhe Song and Yonggang Qi},
+    booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+    year={2023}
 }
 ```

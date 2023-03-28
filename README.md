@@ -1,7 +1,7 @@
 # Zero-Shot Everything Sketch-Based Image Retrieval, and in Explainable Style
 ![Python 3.6](https://img.shields.io/badge/python-3.6-green) ![Pytorch 1.10](https://img.shields.io/badge/pytorch-1.10-green) ![MIT License](https://img.shields.io/badge/licence-MIT-green)
 
-In this repository, you can find the official PyTorch implementation of [Zero-Shot Everything Sketch-Based Image Retrieval, and in Explainable Style](), CVPR2023, Highlight.
+In this repository, you can find the official PyTorch implementation of [Zero-Shot Everything Sketch-Based Image Retrieval, and in Explainable Style](https://arxiv.org/abs/2303.14348), CVPR2023, Highlight.
 
 Authors: [Fengyin Lin](https://github.com/buptLinfy), [Mingkang Li](https://github.com/buptlmk), [Da Li](https://scholar.google.co.uk/citations?user=RPvaE3oAAAAJ&hl=en), [Timothy Hospedales](https://scholar.google.co.uk/citations?user=nHhtvqkAAAAJ&amp;hl=en), [Yi-Zhe Song](https://scholar.google.co.uk/citations?hl=en&user=irZFP_AAAAAJ&view_op=list_works&sortby=pubdate) and [Yonggang Qi](https://qugank.github.io/), Beijing University of Posts and Telecommunications, Samsung AI Centre Cambridge, University of Edinburgh, SketchX CVSSP University of Surrey.
 
@@ -175,8 +175,7 @@ This project is released under the [MIT License](./LICENSE).
 ## Citation
 If you find this repository useful for your research, please use the following.
 ```
-@inproceedings{
-zse-sbir-cvpr2023,
+@inproceedings{zse-sbir-cvpr2023,
 title={Zero-Shot Everything Sketch-Based Image Retrieval, and in Explainable Style},
 author={Fengyin Lin, Mingkang Li, Da Li, Timothy Hospedales, Yi-Zhe Song and Yonggang Qi},
 booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},

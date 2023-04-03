@@ -31,16 +31,16 @@ class Relation_Network(nn.Module):
                 nn.Linear(196, 1, bias=True)
             )
 
-        # 0.7
-        elif anchor == 68:
+        # 0.9
+        elif anchor == 144:
             self.rn = nn.Sequential(
-                nn.Linear(anchor * anchor, 512, bias=True),
+                nn.Linear(anchor * anchor, 1728, bias=True),
                 nn.ReLU(inplace=True),
                 nn.Dropout(dropout),
-                nn.Linear(512, 68, bias=True),
+                nn.Linear(1728, 144, bias=True),
                 nn.ReLU(inplace=True),
                 nn.Dropout(dropout),
-                nn.Linear(68, 1, bias=True)
+                nn.Linear(144, 1, bias=True)
             )
 
         else:

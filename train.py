@@ -52,8 +52,8 @@ def train():
             cls_fea, rn_scores = model(sk, im)
 
             # loss
-            losstri = triplet_loss(cls_fea, args) * 2   # losstri 初始值应为1左右
-            lossrn = rn_loss(rn_scores, target_rn) * 4  # lossrn  初始值应为1左右
+            losstri = triplet_loss(cls_fea, args) * 2   # The initial value of losstri should be around 1.00.
+            lossrn = rn_loss(rn_scores, target_rn) * 4  # The initial value of lossrn should be around 1.00.
             loss = losstri + lossrn
 
             # backward

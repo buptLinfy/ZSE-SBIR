@@ -118,6 +118,7 @@ class Encoder(nn.Module):
             self.layers.append(nn.ModuleList([Encoder1DBlock(input_shape, heads, mlp_dim)]))
 
         self.keep_rate = (1, ) * 12
+        # self.keep_rate = (1, 1, 1, 0.9) + (1, 1, 0.9) + (1, 1, 0.9) + (1, 1)    # 196 -> 177 -> 160 -> 144
 
     def forward(self, img, mask=None):
         x = img

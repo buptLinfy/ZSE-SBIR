@@ -131,9 +131,9 @@ The trained model on Sketchy Ext is provided on [Google Drive](https://drive.goo
 
 Here is a quick start for evaluating the network on Sketchy Ext. Please pay attention to modifying data path and save path before run.
 ```bash
-# use ret-token for zs-sbir, and use all test data.
+# use rn-score for zs-sbir, and use all test data.
 python -u test.py -r rn -- testall
-# use cls-token for zs-sbir, which is quite faster.
+# use ret-token for zs-sbir, which is quite faster.
 python -u test.py -r sa -- testall
 # or use nohup command
 nohup python -u test.py -r rn --testall > test_sketchy_ext.log 2>&1 &

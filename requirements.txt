@@ -1,8 +1,9 @@
 torch==1.10.0+cu113
-torchvision==0.2.2
-tqdm==4.65.0
+torchvision==0.11.1+cu113
+torchaudio==0.10.0+cu113
+tqdm==4.15.0
 numpy==1.19.2
-Pillow==9.4.0
+Pillow==7.2.0
 einops==0.3.0
-joblib==1.2.0
-tensorboardX==2.6
+joblib==0.11
+tensorboardX==2.1

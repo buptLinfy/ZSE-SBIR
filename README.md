@@ -11,7 +11,7 @@ components (i) a self-attention module with a learnable tokenizer to produce vis
 ![Fig.1](./images/overview.png)
 
 ## Datasets
-Please download SBIR datasets(sketches and photos) from the official websites or Google Drive and `tar -zxvf dataset` to the corresponding directory in `./datasets`. We provide train and test splits for different datasets.
+Please download SBIR datasets from the official websites or Google Drive and `tar -zxvf dataset` to the corresponding directory in `./datasets`. We provide train and test splits for different datasets.
 
 ### Sketchy
 Please go to the [Sketchy official website](https://sketchy.eye.gatech.edu/), or download the dataset from [Google Drive]().

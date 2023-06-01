@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Zero-Shot Everything Sketch-Based Image Retrieval, and in Explainable Style</title>
+    <link rel="stylesheet" href="w3.css">
+</head>
+
+<body>
+
+    <br />
+    <br />
+
+    <div class="w3-container">
+        <div class="w3-content" style="max-width:1080px">
+            <div class="w3-content w3-center" style="max-width:1000px">
+                <h2 id="title"><b>Zero-Shot Everything Sketch-Based Image Retrieval,<br>and in Explainable Style</b></h2>
+                <p>
+                    <a target="_blank">Fengyin Lin</a><sup>1*</sup>
+                    &nbsp;&nbsp;&nbsp;
+                    <a target="_blank">Mingkang Li</a><sup>1*</sup>
+                    &nbsp;&nbsp;&nbsp;
+                    <a target="_blank">Da Li</a><sup>2†</sup>
+                    &nbsp;&nbsp;&nbsp;
+                    <a target="_blank">Timothy Hospedales</a><sup>2,3</sup>
+                    &nbsp;&nbsp;&nbsp;
+                    <a target="_blank">Yi-Zhe Song</a><sup>4</sup>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="https://qugank.github.io/"  target="_blank">Yonggang Qi</a><sup>1</sup>
+                </p>
+                <p>
+                    <sup>1</sup>Beijing University of Posts and Telecommunications
+                    &nbsp; &nbsp;
+                    <sup>2</sup>Samsung AI Centre, Cambridge
+                    <br>
+                    <sup>3</sup>University of Edinburgh
+                    &nbsp; &nbsp;
+                    <sup>4</sup>SketchX, CVSSP, University of Surrey
+                </p>
+                <p><b>CVPR 2023</b></p>
+                <div class="w3-content w3-center" style="max-width:850px">
+                    <div style="max-width:850px; display:inline-block">
+                    <a href="https://arxiv.org/abs/2303.14348" target="_blank" style="color:#007bff">
+                            <img src="ZSE-SBIR.png" alt="front" style="width:50px"/>
+                            <div style="margin:10px 0"></div>
+                            <b>arXiv</b></a>
+                    </div>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;
+                    <div style="max-width:850px; display:inline-block">
+                    <a href="https://drive.google.com/file/d/11GAr0jrtowTnR3otyQbNMSLPeHyvecdP/view?usp=sharing" target="_blank" style="color:#007bff">
+                            <img src="database.svg" alt="front" style="width:50px"/>
+                            <div style="margin:10px 0"></div>
+                            <b>Dataset</b></a>
+                    </div>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;
+                    <div style="max-width:850px; display:inline-block">
+                    <a href="https://github.com/buptLinfy/ZSE-SBIR" target="_blank" style="color:#007bff">
+                            <img src="github.png" alt="front" style="width:50px"/>
+                            <div style="margin:10px 0"></div>
+                            <b>Code</b></a>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="w3-content w3-center" style="max-width:850px">
+                <img src="openning-v7.png" alt="front" style="width:580px"/>
+                <p class="w3-left-align">Figure 1. Attentive regions of self-/cross-attention and the learned visual correspondence for tackling unseen cases.
+                    (a) The proposed retrieval token [Ret] can attend to informative regions. Different colors are attention maps from different heads.
+                    (b) Cross-attention offers explainability by explicitly constructing local visual correspondence. The local matches learned from training data are shareable knowledge,
+                    which enables ZS-SBIR to work under diverse settings (inter- / intra-category and cross datasets) with just one model.
+                    (c) An input sketch can be transformed into its image by the learned correspondence, i.e., sketch patches are replaced by the closest image patches from the retrieved image.
+                </p>
+            </div>
+            <br>
+            <h3 class="w3-left-align" id="introduction"><b>Introduction</b></h3>
+            <p>
+                This paper studies the problem of zero-short sketch-based image retrieval (ZS-SBIR), however with two significant differentiators to prior art
+                (i) we tackle all variants (inter-category, intra-category, and cross datasets) of ZS-SBIR with just one network <b>("everything")</b>, and
+                (ii) we would really like to understand how this sketch-photo matching operates <b>("explainable")</b>.
+                Our key innovation lies with the realization that such a cross-modal matching problem could be reduced to comparisons of groups of key local patches - akin to the seasoned "bag-of-words" paradigm.
+                Just with this change, we are able to achieve both of the aforementioned goals, with the added benefit of no longer requiring external semantic knowledge.
+                <br>
+                <br>
+                Technically, ours is a transformer-based cross-modal network, with three novel components
+                (i) <b>a self-attention module</b> with a learnable tokenizer to produce visual tokens that correspond to the most informative local regions,
+                (ii) <b>a cross-attention module</b> to compute local correspondences between the visual tokens across two modalities, and finally
+                (iii) <b>a kernel-based relation network</b> to assemble local putative matches and produce an overall similarity metric for a sketch-photo pair.
+                Experiments show ours indeed delivers superior performances across all ZS-SBIR settings. The all important explainable goal is elegantly achieved by
+                visualizing cross-modal token correspondences, and for the first time, via sketch to photo synthesis by universal replacement of all matched photo patches.
+            </p>
+
+
+            <h3 class="w3-left-align"><b>Our Solution</b></h3>
+            <div class="w3-content w3-center" style="max-width:1000px">
+                <img src="network-cvpr23-v4.png" alt="network" style="width:1000px" />
+                <p>
+                    Figure 2. Network overview.
+                </p>
+            </div>
+
+            <p>
+                As shown in Figure 2,
+                (a) Learnable tokenization generates structure preserved tokens, preventing the generation of uninformative tokens.
+                (b) Self-attention finds the most informative regions ready for local matching.
+                (c) Cross-attention learns visual correspondence from visual tokens. A retrieval token [Ret] is added as a supervision signal during training.
+                (d) Token-level relation network enables to explicitly measure the correspondences of cross-modal token pairs. Pairs of removed tokens as per token selection will not be counted.
+            </p>
+
+            <h3 class="w3-left-align" id="results"><b>Experiments and Results</b></h3>
+            <h4 class="w3-left-align" id="healing"><b> Category-level ZS-SBIR</b></h4>
+            <div class="w3-content w3-center" style="max-width:1000px">
+                <table class="w3-bordered w3-border">
+                    <tr>
+                        <th rowspan="2">Method</th>
+                        <th rowspan="2">ESI</th>
+                        <th rowspan="2">R<sup>D</sup></th>
+                        <th colspan="2">TU-Berlin Ext</th>
+                        <th colspan="2">Sketchy Ext</th>
+                        <th colspan="2">Sketchy Ext Split</th>
+                        <th colspan="2">QuickDraw Ext</th>
+                    </tr>
+                    <tr>
+                        <td>mAP</td>
+                        <td>Prec@100</td>
+                        <td>mAP</td>
+                        <td>Prec@100</td>
+                        <td>mAP@200</td>
+                        <td>Prec@200</td>
+                        <td>mAP</td>
+                        <td>Prec@200</td>
+                    </tr>
+                    <tr>
+                        <td>ZSIH</td>
+                        <td>√</td>
+                        <td>64</td>
+                        <td>0.220</td>
+                        <td>0.291</td>
+                        <td>0.254</td>
+                        <td>0.340</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>CC-DG</td>
+                        <td>✗</td>
+                        <td>256</td>
+                        <td>0.247</td>
+                        <td>0.392</td>
+                        <td>0.311</td>
+                        <td>0.468</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>DOODLE</td>
+                        <td>√</td>
+                        <td>256</td>
+                        <td>0.109</td>
+                        <td>-</td>
+                        <td>0.369</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>0.075</td>
+                        <td>0.068</td>
+                    </tr>
+                    <tr>
+                        <td>SEM-PCYC</td>
+                        <td>√</td>
+                        <td>64</td>
+                        <td>0.297</td>
+                        <td>0.426</td>
+                        <td>0.349</td>
+                        <td>0.463</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>SAKE</td>
+                        <td>√</td>
+                        <td>512</td>
+                        <td>0.475</td>
+                        <td>0.599</td>
+                        <td>0.547</td>
+                        <td>0.692</td>
+                        <td>0.497</td>
+                        <td>0.598</td>
+                        <td>0.130</td>
+                        <td>0.179</td>
+                    </tr>
+                    <tr>
+                        <td>SketchGCN</td>
+                        <td>√</td>
+                        <td>300</td>
+                        <td>0.324</td>
+                        <td>0.505</td>
+                        <td>0.382</td>
+                        <td>0.538</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>StyleGuide</td>
+                        <td>✗</td>
+                        <td>200</td>
+                        <td>0.254</td>
+                        <td>0.355</td>
+                        <td>0.376</td>
+                        <td>0.484</td>
+                        <td>0.358</td>
+                        <td>0.400</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>PDFD</td>
+                        <td>√</td>
+                        <td>512</td>
+                        <td>0.483</td>
+                        <td>0.600</td>
+                        <td>0.661</td>
+                        <td>0.781</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>ViT-Vis</td>
+                        <td>✗</td>
+                        <td>512</td>
+                        <td>0.360</td>
+                        <td>0.503</td>
+                        <td>0.410</td>
+                        <td>0.569</td>
+                        <td>0.403</td>
+                        <td>0.512</td>
+                        <td>0.101</td>
+                        <td>0.113</td>
+                    </tr>
+                    <tr>
+                        <td>ViT-Ret</td>
+                        <td>✗</td>
+                        <td>512</td>
+                        <td>0.438</td>
+                        <td>0.578</td>
+                        <td>0.483</td>
+                        <td>0.637</td>
+                        <td>0.416</td>
+                        <td>0.522</td>
+                        <td>0.115</td>
+                        <td>0.127</td>
+                    </tr>
+                    <tr>
+                        <td>ViT-Ret</td>
+                        <td>✗</td>
+                        <td>512</td>
+                        <td>0.438</td>
+                        <td>0.578</td>
+                        <td>0.483</td>
+                        <td>0.637</td>
+                        <td>0.416</td>
+                        <td>0.522</td>
+                        <td>0.115</td>
+                        <td>0.127</td>
+                    </tr>
+                    <tr>
+                        <td>DSN</td>
+                        <td>√</td>
+                        <td>512</td>
+                        <td>0.484</td>
+                        <td>0.591</td>
+                        <td>0.583</td>
+                        <td>0.704</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>BDA-SketRet</td>
+                        <td>√</td>
+                        <td>128</td>
+                        <td>0.375</td>
+                        <td>0.504</td>
+                        <td>0.437</td>
+                        <td>0.514</td>
+                        <td style="color:red">0.556</td>
+                        <td>0.458</td>
+                        <td style="color:red">0.154</td>
+                        <td style="color:red">0.355</td>
+                    </tr>
+                    <tr>
+                        <td>SBTKNet</td>
+                        <td>√</td>
+                        <td>512</td>
+                        <td>0.480</td>
+                        <td>0.608</td>
+                        <td>0.553</td>
+                        <td>0.698</td>
+                        <td>0.502</td>
+                        <td>0.596</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Sketch3T</td>
+                        <td>√</td>
+                        <td>512</td>
+                        <td>0.507</td>
+                        <td>-</td>
+                        <td>0.575</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>TVT</td>
+                        <td>√</td>
+                        <td>384</td>
+                        <td>0.484</td>
+                        <td>0.662</td>
+                        <td>0.648</td>
+                        <td>0.796</td>
+                        <td style="color:blue">0.531</td>
+                        <td style="color:blue">0.618</td>
+                        <td style="color:blue">0.149</td>
+                        <td style="color:blue">0.293</td>
+                    </tr>
+                     <tr bgcolor="lightgray">
+                        <td>Ours-RN</td>
+                        <td>✗</td>
+                        <td>512</td>
+                        <td style="color:blue">0.542</td>
+                        <td style="color:blue">0.657</td>
+                        <td style="color:blue">0.698</td>
+                        <td style="color:blue">0.797</td>
+                        <td>0.525</td>
+                        <td style="color:red">0.624</td>
+                        <td>0.145</td>
+                        <td>0.216</td>
+                    </tr>
+                    <tr bgcolor="lightgray">
+                        <td>Ours-Ret</td>
+                        <td>✗</td>
+                        <td>512</td>
+                        <td style="color:red">0.569</td>
+                        <td>0.637</td>
+                        <td style="color:red">0.736</td>
+                        <td style="color:red">0.808</td>
+                        <td>0.504</td>
+                        <td>0.602</td>
+                        <td>0.142</td>
+                        <td>0.202</td>
+                    </tr>
+                </table>
+                <p>
+                    Table 1. Category-level ZS-SBIR comparison results. “ESI” : External Semantic Information. “-” : not reported.
+                    The best and second best scores are color-coded in red and blue.
+                </p>
+            </div>
+
+            <h4 class="w3-left-align" id="Bib"><b>Bibtex</b></h4>
+
+            If this <a href="https://github.com/buptLinfy/ZSE-SBIR" target="__blank">work</a> is useful for you, please cite it:
+            <div class="w3-code">
+                @inproceedings{zse-sbir-cvpr2023,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;title={Zero-Shot Everything Sketch-Based Image Retrieval, and in Explainable Style},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;author={Fengyin Lin, Mingkang Li, Da Li, Timothy Hospedales, Yi-Zhe Song and Yonggang Qi},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;year={2023}<br>
+                }
+            </div>
+        </div>
+
+        <hr/>
+        <div class="w3-content w3-center w3-opacity" style="max-width:850px"> <p style="font-size: xx-small;color: grey;">Created by Fengyin Lin @ BUPT <br> 2021.8 </p> </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -14,7 +14,7 @@ def test():
     sk_valid_data, im_valid_data = load_data_test(args)
 
     # prepare model
-    model = Model(args.d_model, args)
+    model = Model(args)
     model = model.half()
 
     if args.load is not None:
